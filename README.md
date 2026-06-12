@@ -38,35 +38,21 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### 安装 ClineCode
-
-```bash
-# 克隆仓库
-git clone https://github.com/yourusername/clinecode-python.git
-cd clinecode-python
-
-# 安装依赖
-uv sync
-
-# 激活虚拟环境
-source .venv/bin/activate  # Linux/macOS
-# 或 .venv\Scripts\activate  # Windows
-```
-
 ## 构建项目
 
 ### 开发环境设置
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/yourusername/clinecode-python.git
-cd clinecode-python
+git clone https://github.com/NieYingHui/clinecode.git
+cd clinecode
 
 # 2. 安装所有依赖（包括开发依赖）
 uv sync --all-extras
 
 # 3. 激活虚拟环境
-source .venv/bin/activate
+source .venv/bin/activate  # Linux/macOS
+# 或 .venv\Scripts\activate  # Windows
 
 # 4. 验证安装
 clinecode --help
@@ -124,10 +110,13 @@ clinecode --mode bypassPermissions
 
 ```yaml
 # 示例配置
-permission_mode: default
-model: claude-3-5-sonnet-20241022
-max_tokens: 4096
-temperature: 0.7
+providers:
+  - name: anthropic-official
+    protocol: anthropic
+    base_url: https://api.anthropic.com
+    api_key: "your-api-key-here"
+    model: claude-sonnet-4-20250514
+    thinking: true
 ```
 
 ## 开发指南
@@ -135,7 +124,7 @@ temperature: 0.7
 ### 项目结构
 
 ```
-clinecode-python/
+clinecode/
 ├── clinecode/              # 主包
 │   ├── __main__.py        # 入口点
 │   ├── agent.py           # AI 代理核心
@@ -216,8 +205,8 @@ MIT License
 
 ## 联系方式
 
-- 问题反馈：[GitHub Issues](https://github.com/yourusername/clinecode-python/issues)
-- 讨论交流：[GitHub Discussions](https://github.com/yourusername/clinecode-python/discussions)
+- 问题反馈：[GitHub Issues](https://github.com/NieYingHui/clinecode/issues)
+- 讨论交流：[GitHub Discussions](https://github.com/NieYingHui/clinecode/discussions)
 
 ---
 
